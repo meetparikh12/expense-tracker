@@ -12,7 +12,7 @@
     color: #fff !important;
     text-transform: uppercase;
     text-decoration: none;
-    background: #2979FF;
+    background: indigo;
     padding: 15px;
     border-radius: 5px;
     display: inline-block;
@@ -20,11 +20,14 @@
     width: 100%;
     cursor: pointer;
 }
+.button:hover{
+    background: rgb(117, 19, 187);
+}
 
 .mt-20 {
     margin-top: 20px;
 }
 
-button:focus {
+.button:focus {
     outline: 0;
 }

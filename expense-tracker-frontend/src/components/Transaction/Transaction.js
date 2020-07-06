@@ -6,7 +6,8 @@ import { addNewTransaction } from '../../actions/actions';
 function Transaction(props) {
     const [text, setText] = useState('');
     const [amount, setAmount] = useState('');
-    const addTransactionHandler = () => {
+    const addTransactionHandler = (event) => {
+        event.preventDefault();
         let amt = amount.trim();
         if(amt[0]==='+' || amt[0]==='-'){
             let amtStr = amt[0] + amt.substr(1).trim()
@@ -34,17 +35,19 @@ function Transaction(props) {
     return (
         <div className="transaction">
             <h6 className="primary_heading text-capitalize text-white font-weight-light mb-4">Add New Transaction</h6>
-            <div>
-                <h5 className="text-white font-weight-light">Text :</h5>
-                <span className="text-white font-weight-light">(eg: Shopping, Rent, Auto Ride, Book, etc...)</span>          
-                <input placeholder="Enter Text" required className="expenseInput mt-2" value={text} type="text" onChange={(event)=> setText(event.target.value)}/>
-            </div>
-            <div>
-                <h5 className="text-white font-weight-light mt-4">Amount :</h5>  
-                <span className="text-white font-weight-light">(-ve: Expense, +ve: Income | eg: -50, +40)</span>          
-                <input placeholder="Enter Amount" required className="expenseInput mt-2" value={amount} type="text" onChange={(event)=> setAmount(event.target.value)}/>
-            </div>
-            <button className="button mt-20" type="button" onClick={addTransactionHandler}>Add Transaction</button>
+            <form onSubmit={addTransactionHandler}>
+                <div>
+                    <h5 className="text-white font-weight-light">Text :</h5>
+                    <span className="text-white font-weight-light">(eg: Shopping, Rent, Auto Ride, Book, etc...)</span>          
+                    <input placeholder="Enter Text" className="expenseInput mt-2" value={text} type="text" onChange={(event)=> setText(event.target.value)}/>
+                </div>
+                <div>
+                    <h5 className="text-white font-weight-light mt-4">Amount :</h5>  
+                    <span className="text-white font-weight-light">(-ve: Expense, +ve: Income | eg: -50, +40)</span>          
+                    <input placeholder="Enter Amount" className="expenseInput mt-2" value={amount} type="text" onChange={(event)=> setAmount(event.target.value)}/>
+                </div>
+                <input className="button mt-20" type="submit" value="Add Transaction"/>
+            </form>
         </div>
     )
 }
