@@ -1,0 +1,9 @@
+.history h6{
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgb(226, 222, 222);
+}
+
+.history-list {
+    margin-left: 0;
+    padding-left: 0;
+}
