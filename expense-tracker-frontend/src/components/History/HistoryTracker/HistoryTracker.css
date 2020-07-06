@@ -23,3 +23,30 @@ li {
     margin-right: -16px;
     height: 28px;
 }
+
+@media (max-width: 517px){
+    .item_name {
+        margin-top: -3.2%
+    }
+    .item_amount {
+        margin-top: -3.2%;
+        padding-right: 10px;
+        margin-right: -14px;
+        height: 27px;
+    }
+}
+@media (max-width: 454px) {
+    .item_amount {
+        height: 26px;
+    }
+}
+@media (max-width: 408px){
+    .item_amount{
+        height: 25px;
+    }
+}
+@media (max-width: 368px) {
+    .item_amount {
+        height: 24px;
+    }
+}

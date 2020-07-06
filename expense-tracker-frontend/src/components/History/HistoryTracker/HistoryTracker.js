@@ -2,7 +2,7 @@ import React from 'react'
 import './HistoryTracker.css'
 export default function HistoryTracker({text, amount}) {
     const borderStyleForExpense = {
-        borderRight: "10px solid red"
+        borderRight: "10px solid rgb(240, 53, 53)"
     }
     const borderStyleForIncome = {
         borderRight: "10px solid green"

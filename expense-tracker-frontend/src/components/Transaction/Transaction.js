@@ -7,11 +7,29 @@ function Transaction(props) {
     const [text, setText] = useState('');
     const [amount, setAmount] = useState('');
     const addTransactionHandler = () => {
-        const price = Math.round(parseFloat(amount)*100)/100;
-        const transactionInfo = {text, price};
-        props.addNewTransaction(transactionInfo);
-        setText('');
-        setAmount('');
+        let amt = amount.trim();
+        if(amt[0]==='+' || amt[0]==='-'){
+            let amtStr = amt[0] + amt.substr(1).trim()
+            if(!isNaN(amtStr)){
+                let txt = text.trim()
+                if(txt.length>15){
+                    alert('Uh, oh! Text should not be greater than 15 characters.')
+                    return;
+                }else if(txt.length>0 && /^[A-Za-z]/.test(txt)){
+                    const price = Math.round(parseFloat(amtStr)*100)/100;
+                    const transactionInfo = {text, price};
+                    props.addNewTransaction(transactionInfo);
+                    setText('');
+                    setAmount('');
+                }else{
+                    alert('Uh, oh! Please enter valid text as shown in (eg.).')
+                }
+            }else{
+                alert('Uh, oh! Please enter valid amount as shown in (eg.).')
+            }
+        }else{
+            alert('Uh, oh! Please enter valid amount as shown in (eg.).')
+        }   
     }
     return (
         <div className="transaction">

@@ -7,7 +7,7 @@ import { getBalanceInfo } from '../../actions/actions'
 function Balance({getBalanceInfo, transactionInfo, incomeBalance, expenseBalance}) {
     const [income, setIncome] = useState(0)
     const [expense, setExpense] = useState(0)
-    const [totalBalance, setTotalBalance] = useState('')
+    const [totalBalance, setTotalBalance] = useState(0)
     
     useEffect(()=> {
         getBalanceInfo();
