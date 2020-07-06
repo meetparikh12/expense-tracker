@@ -1,7 +1,8 @@
 import React from 'react'
 import './Dashboard.css'
 import Balance from '../../components/Balance/Balance';
-import Input from '../../components/Input/Input';
+import Transaction from '../../components/Transaction/Transaction';
+
 export default function Dashboard() {
     return (
         <div className="Dashboard">
@@ -9,7 +10,7 @@ export default function Dashboard() {
                 <div className="InnerContainer">
                     <h1 className="heading mt-4 text-center">Track Your Expense</h1>
                     <Balance/>
-                    <Input/>
+                    <Transaction/>
                 </div>
             </div>
         </div>

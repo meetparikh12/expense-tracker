@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import './Input.css'
+import './Transaction.css'
 
 export default function Input() {
     const [text, setText] = useState('');
     const [amount, setAmount] = useState('');
     return (
         <div className="transaction">
-            <h6 className="primary_heading text-white font-weight-light mb-4">Add New Transaction</h6>
+            <h6 className="primary_heading text-capitalize text-white font-weight-light mb-4">Add New Transaction</h6>
             <div>
                 <input placeholder="Enter Text" className="expenseInput" value={text} type="text" onChange={(event)=> setText(event.target.value)}/>
             </div>
