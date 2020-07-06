@@ -37,16 +37,28 @@ li {
 }
 @media (max-width: 454px) {
     .item_amount {
+        margin-top: -3.5%;
         height: 26px;
     }
-}
-@media (max-width: 408px){
-    .item_amount{
-        height: 25px;
+    .item_name{
+        margin-top: -3.6%;
     }
 }
-@media (max-width: 368px) {
-    .item_amount {
-        height: 24px;
+@media (max-width: 415px){
+    .item_amount{
+        height: 25px;
+        margin-top: -4.4%;
+    }
+    .item_name{
+        margin-top: -4.4%;
+    }
+}
+@media (max-width: 382px) {
+    .item_amount{
+        height: 29px;
+        margin-top: -5.5%;
+    }
+    .item_name{
+        margin-top: -5.5%;
     }
 }

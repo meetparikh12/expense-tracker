@@ -20,7 +20,7 @@ function History({historyInfo}) {
                     {historyInfo.map((element, i)=> 
                         <HistoryTracker 
                             key={i} 
-                            text={element.text} 
+                            text={element.txt} 
                             amount={element.price}/>
                     )}
                 </ul>

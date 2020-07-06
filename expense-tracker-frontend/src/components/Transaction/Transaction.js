@@ -17,7 +17,7 @@ function Transaction(props) {
                     return;
                 }else if(txt.length>0 && /^[A-Za-z]/.test(txt)){
                     const price = Math.round(parseFloat(amtStr)*100)/100;
-                    const transactionInfo = {text, price};
+                    const transactionInfo = {txt, price};
                     props.addNewTransaction(transactionInfo);
                     setText('');
                     setAmount('');
@@ -37,12 +37,12 @@ function Transaction(props) {
             <div>
                 <h5 className="text-white font-weight-light">Text :</h5>
                 <span className="text-white font-weight-light">(eg: Shopping, Rent, Auto Ride, Book, etc...)</span>          
-                <input placeholder="Enter Text" className="expenseInput mt-2" value={text} type="text" onChange={(event)=> setText(event.target.value)}/>
+                <input placeholder="Enter Text" required className="expenseInput mt-2" value={text} type="text" onChange={(event)=> setText(event.target.value)}/>
             </div>
             <div>
                 <h5 className="text-white font-weight-light mt-4">Amount :</h5>  
                 <span className="text-white font-weight-light">(-ve: Expense, +ve: Income | eg: -50, +40)</span>          
-                <input placeholder="Enter Amount" className="expenseInput mt-2" value={amount} type="text" onChange={(event)=> setAmount(event.target.value)}/>
+                <input placeholder="Enter Amount" required className="expenseInput mt-2" value={amount} type="text" onChange={(event)=> setAmount(event.target.value)}/>
             </div>
             <button className="button mt-20" type="button" onClick={addTransactionHandler}>Add Transaction</button>
         </div>
