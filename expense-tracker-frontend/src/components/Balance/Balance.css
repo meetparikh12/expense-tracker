@@ -1,0 +1,22 @@
+.primary_heading{
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+.current_balance{
+    font-size: 2rem;
+}
+.balance_info {
+    border: 1px solid white;
+    padding: 10px;
+    background-color: white;
+    margin: 10% auto;
+}
+.income {
+    border-right: 1px solid gray;
+}
+.income_balance{
+    color: rgb(12, 233, 159)
+}
+.expense_balance{
+    color: rgb(240, 53, 53)
+}
