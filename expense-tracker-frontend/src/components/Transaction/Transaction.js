@@ -37,4 +37,5 @@ const mapDispatchToProps = dispatchEvent => {
         }
     }
 }
+
 export default connect(null,mapDispatchToProps)(Transaction)

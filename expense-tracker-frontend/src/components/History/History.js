@@ -1,29 +1,25 @@
 import React from 'react'
 import HistoryTracker from './HistoryTracker/HistoryTracker'
 import './History.css'
+import { connect } from 'react-redux'
 
-const historyInfo = [{
-    id: '1',
-    text: 'Cash',
-    amount: '+500'
-}, {
-    id: '2',
-    text: 'Auto Ride',
-    amount: '-400'
-}, {
-    id: '3',
-    text: 'Book',
-    amount: '-50'
-}]
-export default function History() {
+function History({historyInfo}) {
+    if(historyInfo.length===0){
+        return  (
+            <div className="history">
+                    <h6 className="primary_heading text-capitalize text-white font-weight-light mb-4">History</h6>
+                    <h5 className="text-white font-weight-light text-center m-4">-- No transaction Yet! --</h5>
+            </div>
+        )
+    }
     return (
         <div className="history">
             <h6 className="primary_heading text-capitalize text-white font-weight-light mb-4">History</h6>
             <div className="history-tracker">
                 <ul className="history-list">
-                    {historyInfo.map((element)=> 
+                    {historyInfo.map((element, i)=> 
                         <HistoryTracker 
-                            key={element.id} 
+                            key={i} 
                             text={element.text} 
                             amount={element.amount}/>
                     )}
@@ -32,3 +28,10 @@ export default function History() {
         </div>
     )
 }
+const mapStateToProps = state => {
+    return {
+        historyInfo : state.transaction.transactionInfo
+    }
+}
+
+export default connect(mapStateToProps, null)(History)
