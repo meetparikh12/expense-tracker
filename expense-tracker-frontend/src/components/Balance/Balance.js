@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './Balance.css'
 import { connect } from 'react-redux'
 import { getBalanceInfo } from '../../actions/actions'
+
 function Balance({getBalanceInfo, transactionInfo, incomeBalance, expenseBalance}) {
     const [income, setIncome] = useState(0)
     const [expense, setExpense] = useState(0)
@@ -19,17 +20,17 @@ function Balance({getBalanceInfo, transactionInfo, incomeBalance, expenseBalance
             setExpense(0)
         } else if(incomeBalance.length>0 && expenseBalance.length===0){
             incomeSum = incomeBalance.reduce((acc,cur)=> acc+cur)
-            setIncome(incomeSum)
+            setIncome(Math.round(Math.abs(incomeSum) * 100) / 100)
         } else if(expenseBalance.length>0 && incomeBalance.length===0){
             expenseSum = expenseBalance.reduce((acc,cur)=> acc+cur)
-            setExpense(Math.abs(expenseSum))
+            setExpense(Math.round(Math.abs(expenseSum)*100)/100)
         }else {
             incomeSum = incomeBalance.reduce((acc, cur) => acc + cur)
-            setIncome(incomeSum)
+            setIncome(Math.round(Math.abs(incomeSum)*100)/100)
             expenseSum = expenseBalance.reduce((acc, cur) => acc + cur)
-            setExpense(Math.abs(expenseSum))
+            setExpense(Math.round(Math.abs(expenseSum)*100)/100)
         }
-        setTotalBalance(income - expense)
+        setTotalBalance((income - expense).toFixed(2))
     }, [incomeBalance, expenseBalance, income, expense])
 
     return (
@@ -48,6 +49,11 @@ function Balance({getBalanceInfo, transactionInfo, incomeBalance, expenseBalance
             </div>
         </div>
     )
+}
+Balance.defaultProps = {
+    transactionInfo: [],
+    incomeBalance: [],
+    expenseBalance: []
 }
 const mapStateToProps = state => {
     return {

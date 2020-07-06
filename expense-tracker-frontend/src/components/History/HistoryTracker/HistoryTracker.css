@@ -19,7 +19,6 @@ li {
 .item_amount {
     float: right;
     margin-top: -3%;
-    border-right: 10px solid green;
     padding-right: 10px;
     margin-right: -16px;
     height: 28px;

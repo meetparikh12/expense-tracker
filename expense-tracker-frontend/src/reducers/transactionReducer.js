@@ -1,4 +1,5 @@
 import { ADD_NEW_TRANSACTION, GET_BALANCE } from "../actions/actionTypes";
+import cookie from 'js-cookie';
 
 const initialState = {
     transactionInfo : [],
@@ -10,6 +11,7 @@ export const transactionReducer = (state=initialState, action) => {
     switch (action.type) {
         case ADD_NEW_TRANSACTION:
             const transactionArray = [...state.transactionInfo,action.payload]
+            cookie.set("transaction", transactionArray);
             return {
                 ...state,
                 transactionInfo: transactionArray
