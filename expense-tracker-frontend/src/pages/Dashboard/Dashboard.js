@@ -8,7 +8,7 @@ export default function Dashboard() {
         <div className="Dashboard">
             <div className="OuterContainer">
                 <div className="InnerContainer">
-                    <h1 className="heading">Track Your Expense</h1>
+                    <h1 className="heading mt-4 text-center">Track Your Expense</h1>
                     <Balance/>
                     <div>
                         <input placeholder="Enter Text..." className="expenseInput" value={text} type="text" onChange={(event)=> setText(event.target.value)}/>
