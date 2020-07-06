@@ -13,8 +13,6 @@ function Balance({getBalanceInfo, transactionInfo, incomeBalance, expenseBalance
     }, [getBalanceInfo, transactionInfo])
 
     useEffect(() => {
-        console.log(true)
-        console.log(incomeBalance.length, expenseBalance.length)
         let incomeSum=0,expenseSum=0;
         if(incomeBalance.length===0 && expenseBalance.length===0){
             setIncome(0)
@@ -36,16 +34,16 @@ function Balance({getBalanceInfo, transactionInfo, incomeBalance, expenseBalance
 
     return (
         <div className="balance mt-4 text-white">
-            <h6 className="primary_heading text-secondary font-weight-light">Your Balance</h6>
-            <div className="current_balance font-weight-light">${totalBalance}.00</div>
+            <h6 className="primary_heading text-secondary font-weight-bold">Your Balance</h6>
+            <div className="current_balance font-weight-light">₹ {totalBalance}</div>
             <div className="balance_info row">
                 <div className="income text-dark text-uppercase text-center col-6 col-6">
                     <h6 className="font-weight-light">Income</h6>
-                    <div className="font-weight-light income_balance">${income}.00</div>
+                    <div className="font-weight-light income_balance">₹ {income}</div>
                 </div>
                 <div className="expense text-dark text-uppercase text-center col-6 col-6">
                     <h6 className="font-weight-light">Expense</h6>
-                    <div className="font-weight-light expense_balance">${expense}.00</div>
+                    <div className="font-weight-light expense_balance">₹ {expense}</div>
                 </div>
             </div>
         </div>

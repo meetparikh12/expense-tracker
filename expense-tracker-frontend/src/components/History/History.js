@@ -8,7 +8,7 @@ function History({historyInfo}) {
         return  (
             <div className="history">
                     <h6 className="primary_heading text-capitalize text-white font-weight-light mb-4">History</h6>
-                    <h5 className="text-white font-weight-light text-center m-4">-- No transaction Yet! --</h5>
+                    <h5 className="text-white font-weight-light text-center m-4">-- No transaction Yet --</h5>
             </div>
         )
     }
@@ -21,7 +21,7 @@ function History({historyInfo}) {
                         <HistoryTracker 
                             key={i} 
                             text={element.text} 
-                            amount={element.amount}/>
+                            amount={element.price}/>
                     )}
                 </ul>
             </div>

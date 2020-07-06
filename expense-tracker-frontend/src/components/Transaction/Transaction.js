@@ -7,7 +7,8 @@ function Transaction(props) {
     const [text, setText] = useState('');
     const [amount, setAmount] = useState('');
     const addTransactionHandler = () => {
-        const transactionInfo = {text, amount};
+        const price = Math.round(parseFloat(amount)*100)/100;
+        const transactionInfo = {text, price};
         props.addNewTransaction(transactionInfo);
         setText('');
         setAmount('');
