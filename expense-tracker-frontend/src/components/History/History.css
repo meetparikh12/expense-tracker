@@ -7,3 +7,30 @@
     margin-left: 0;
     padding-left: 0;
 }
+
+.history-tracker{
+    height: 36vh;
+}
+
+@media screen and (max-width: 517px){
+    .history-tracker{
+        height: 35vh;
+    }
+}
+
+@media screen and (max-width: 517px) {
+    .history-tracker {
+        height: 34vh;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .history-tracker {
+        height: 33vh;
+    }
+}
+@media screen and (max-width: 400px) {
+    .history-tracker {
+        height: 32vh;
+    }
+}
