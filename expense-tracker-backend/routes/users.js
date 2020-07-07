@@ -12,5 +12,5 @@ route.post('/register', [
 
 route.post('/login', userController.LOGIN_USER);
 route.post('/transaction',auth ,userController.ADD_NEW_TRANSACTION);
-
+route.get('/transactions', auth, userController.GET_TRANSACTIONS);
 module.exports = route;

@@ -108,3 +108,19 @@ exports.ADD_NEW_TRANSACTION = async (req,res,next)=> {
     console.log(user);
     res.status(201).json({message: 'Transaction added', user});
 }
+
+exports.GET_TRANSACTIONS = async (req,res,next)=> {
+    const {userId} = req.user;
+    let transactions;
+    try {
+        user = await User.findById(userId).select('transaction')
+    }catch(err){
+        return next(new ErrorHandling('User does not exist', 500))
+    }
+    if(!user){
+        return next(new ErrorHandling('User not found', 404))
+    }
+
+    res.status(200).json({transactions: user.transaction});
+    
+}
