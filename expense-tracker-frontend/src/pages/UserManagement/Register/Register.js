@@ -5,6 +5,7 @@ import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import config from 'react-global-configuration'
 toast.configure()
 
 function Register(props) {
@@ -31,7 +32,7 @@ function Register(props) {
         newUser.set('confirmPassword', confirmPassword);
         newUser.append('image', image);
 
-        Axios.post('http://localhost:5000/api/users/register', newUser)
+        Axios.post(`${config.get('backend_url_users')}register`, newUser)
         .then((res)=> {
             toast.success(res.data.message, {position: toast.POSITION.TOP_RIGHT, autoClose: 2000})
             props.history.push('/login')

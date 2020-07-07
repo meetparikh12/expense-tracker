@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './Balance.css'
 import { connect } from 'react-redux'
 import { getBalanceInfo } from '../../actions/actions'
+import config from "react-global-configuration";
 
 function Balance({getBalanceInfo, transactionInfo, incomeBalance, expenseBalance, userInfo}) {
     const [income, setIncome] = useState(0)
@@ -38,7 +39,7 @@ function Balance({getBalanceInfo, transactionInfo, incomeBalance, expenseBalance
             <div className="row">
                 <div className="col-md-6 text-center">
                     <img className="img-rounded rounded-circle profile-image" 
-                        src={`http://localhost:5000/${userInfo.image}`} 
+                        src={`${config.get('backend_asset_url')}${userInfo.image}`} 
                         alt="Profile Pic"
                     />                
                 </div>

@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom'
 import Cookie from 'js-cookie'
 import { store } from '../../../store/store'
 import { SET_TRANSACTIONS } from '../../../actions/actionTypes'
+import config from 'react-global-configuration'
+
 function Login(props) {
     const [email,setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -25,7 +27,7 @@ function Login(props) {
         setIsBtnDisabled(true)
         event.preventDefault();
         const loginUser = {email,password}
-        Axios.post('http://localhost:5000/api/users/login', loginUser)
+        Axios.post(`${config.get('backend_url_users')}login`, loginUser)
         .then((res)=> {
             const {token} = res.data;
             const transactions = res.data.transactions;
