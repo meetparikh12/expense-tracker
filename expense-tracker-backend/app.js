@@ -7,7 +7,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const {mongoURI} = require('./config/key');
 const path = require('path');
-
+const fs = require('fs');
 const port = process.env.PORT || 5000;
 
 app.use(cors())

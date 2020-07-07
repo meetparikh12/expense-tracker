@@ -76,9 +76,10 @@ exports.LOGIN_USER = async (req,res,next)=> {
     try {
         token = jwt.sign(
             {
-            userId: user._id,
-            email: user.email,
-            name: user.name
+                userId: user._id,
+                email: user.email,
+                name: user.name,
+                image: user.image
             }, 
             secretKey, 
             {expiresIn: '1h'}
