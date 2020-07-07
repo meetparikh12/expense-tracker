@@ -12,7 +12,7 @@ const port = process.env.PORT || 5000;
 app.use(cors())
 app.use(bodyParser.json())
 
-app.use('/api/users', userRoute);
+app.use('/api/users', userRoute)
 
 app.use((req,res,next)=> {
     return next(new ErrorHandling('Specified route does not exist', 404))

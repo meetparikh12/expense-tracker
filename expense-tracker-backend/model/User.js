@@ -13,7 +13,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    
+    transaction: {
+        type: Array,
+        required: true
+    }
 })
 
 module.exports = mongoose.model('User', userSchema);

@@ -84,3 +84,27 @@ exports.LOGIN_USER = async (req,res,next)=> {
     }
     res.status(200).json({token});
 }
+
+exports.ADD_NEW_TRANSACTION = async (req,res,next)=> {
+    const {txt,price} = req.body;
+    const transactionInfo = {txt,price}
+    const {userId} = req.user;
+    let user;
+    try {
+        user = await User.findById(userId)
+    }catch(err){
+        return next(new ErrorHandling('User does not exist', 500))
+    }
+    if(!user){
+        return next(new ErrorHandling('User not found', 404))
+    }
+    try {
+        await user.transaction.unshift(transactionInfo)
+        await user.save()
+    }catch(err){
+        console.log(err);
+        return next(new ErrorHandling('Transaction not saved',500))
+    }
+    console.log(user);
+    res.status(201).json({message: 'Transaction added', user});
+}

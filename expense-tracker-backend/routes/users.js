@@ -2,6 +2,7 @@ const express = require('express');
 const route = express.Router();
 const userController = require('../controller/users');
 const {body} = require('express-validator');
+const auth = require('../middleware/auth');
 
 route.post('/register', [
     body('name').trim().isLength({min: 4, max: 30}).withMessage('Name should be between 4 to 10 characters'),
@@ -10,5 +11,6 @@ route.post('/register', [
 ] ,userController.REGISTER_USER);
 
 route.post('/login', userController.LOGIN_USER);
+route.post('/transaction',auth ,userController.ADD_NEW_TRANSACTION);
 
 module.exports = route;
