@@ -4,6 +4,7 @@ Expense Tracker is a responsive web-application created using MERN stack where u
 Modules covered are:
 
 - User Management
+- Pagination
 - Image-Upload Functionality
 - Outlay Tracking Mechanism
 
