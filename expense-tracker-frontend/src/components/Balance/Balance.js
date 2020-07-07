@@ -4,7 +4,7 @@ import './Balance.css'
 import { connect } from 'react-redux'
 import { getBalanceInfo } from '../../actions/actions'
 
-function Balance({getBalanceInfo, transactionInfo, incomeBalance, expenseBalance}) {
+function Balance({getBalanceInfo, transactionInfo, incomeBalance, expenseBalance, userInfo}) {
     const [income, setIncome] = useState(0)
     const [expense, setExpense] = useState(0)
     const [totalBalance, setTotalBalance] = useState(0)
@@ -35,8 +35,18 @@ function Balance({getBalanceInfo, transactionInfo, incomeBalance, expenseBalance
 
     return (
         <div className="balance mt-4 text-white">
-            <h6 className="primary_heading text-secondary font-weight-bold">Your Balance</h6>
-            <div className="current_balance font-weight-light">₹ {totalBalance}</div>
+            <div className="row">
+                <div className="col-md-6 text-center">
+                    <img className="img-rounded rounded-circle profile-image" 
+                        src={`http://localhost:5000/${userInfo.image}`} 
+                        alt="Profile Pic"
+                    />                
+                </div>
+                <div className="col-md-6 text-center total-balance-block">
+                    <h6 className="primary_heading text-secondary font-weight-bold">Your Balance</h6>
+                    <div className="current_balance font-weight-light">₹ {totalBalance}</div>
+                </div>
+            </div>
             <div className="balance_info row">
                 <div className="income text-dark text-uppercase text-center col-6 col-6">
                     <h6 className="font-weight-light">Income</h6>
@@ -59,7 +69,8 @@ const mapStateToProps = state => {
     return {
         transactionInfo: state.transaction.transactionInfo,
         incomeBalance: state.transaction.incomeBalance,
-        expenseBalance: state.transaction.expenseBalance
+        expenseBalance: state.transaction.expenseBalance,
+        userInfo: state.user.userInfo
     }
 }
 const mapDispatchToProps = dispatchEvent => {

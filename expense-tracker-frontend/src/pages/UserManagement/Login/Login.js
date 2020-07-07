@@ -7,7 +7,9 @@ import setJwtToken from '../../../components/shared/SecurityUtils/setJwtToken'
 import { connect } from 'react-redux'
 import { setUserInfo } from '../../../actions/actions'
 import { Link } from 'react-router-dom'
-
+import Cookie from 'js-cookie'
+import { store } from '../../../store/store'
+import { SET_TRANSACTIONS } from '../../../actions/actionTypes'
 function Login(props) {
     const [email,setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -26,6 +28,12 @@ function Login(props) {
         Axios.post('http://localhost:5000/api/users/login', loginUser)
         .then((res)=> {
             const {token} = res.data;
+            const transactions = res.data.transactions;
+            store.dispatch({
+                type: SET_TRANSACTIONS,
+                payload: transactions
+            })
+            Cookie.set("transaction", transactions);
             localStorage.setItem("jwt-token", token);
             setJwtToken(token);
             const decoded_token = jwt_decode(token);
@@ -34,7 +42,6 @@ function Login(props) {
         })
         .catch((err)=> {
             setIsBtnDisabled(false)
-            console.log(err)
             toast.error(err.response.data.message, {position: toast.POSITION.TOP_RIGHT, autoClose: 2000})
         })
     }
@@ -46,11 +53,11 @@ function Login(props) {
                     <form onSubmit={formSubmitHandler}>
                         <div className="mb-4">
                             <h5 className="text-white font-weight-light">Email :</h5>
-                            <input placeholder="Enter Email" required className="fieldInput mt-2" value={email} type="text" onChange={(event)=> setEmail(event.target.value)}/>
+                            <input placeholder="Enter Email" required className="form-control form-control" value={email} type="text" onChange={(event)=> setEmail(event.target.value)}/>
                         </div>
                         <div className="mb-2">
                             <h5 className="text-white font-weight-light">Password :</h5>
-                            <input placeholder="Enter Password" required className="fieldInput mt-2" value={password} type="text" onChange={(event)=> setPassword(event.target.value)}/>
+                            <input placeholder="Enter Password" required className="form-control form-control" value={password} type="password" onChange={(event)=> setPassword(event.target.value)}/>
                         </div>
                         <input disabled={isBtnDisabled} className="login-button mt-20" type="submit" value="SIGN IN"/>
                         <Link to="/register"><button disabled={isBtnDisabled} className="register-button mt-20" type="button">SIGN UP</button></Link>

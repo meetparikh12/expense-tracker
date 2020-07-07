@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     background-color: #1A1A1D;
-    height: 100vh;
+    padding: 5% 0;
     align-items: center;
 }
 
@@ -25,12 +25,6 @@
     }
 }
 
-.fieldInput {
-    border-radius: 0;
-    padding: 10px 0px;
-    width: 100%;
-}
-
 .register-button {
     text-transform: uppercase;
     text-decoration: none;
@@ -42,10 +36,6 @@
     cursor: pointer;
     background: rgb(12, 11, 11);
     color: white
-}
-
-.mt-20 {
-    margin-top: 20px;
 }
 
 .register-button:hover {

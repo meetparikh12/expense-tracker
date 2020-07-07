@@ -12,6 +12,22 @@
     border-bottom: 2px solid white;
 }
 
+.logout-button {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    background: rgb(12, 11, 11);
+    color: white
+}
+.logout-button:hover{
+    color: black;
+    background: gray;
+}
 
 @media (min-width: 320px) and (max-width: 517px) {
     .InnerContainer {

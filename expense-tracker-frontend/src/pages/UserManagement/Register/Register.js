@@ -12,6 +12,7 @@ function Register(props) {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [name, setUsername] = useState('')
+    const [image, setImage] = useState('')
     const [isBtnDisabled, setIsBtnDisabled] = useState(false)
 
     useEffect(() => {
@@ -23,7 +24,13 @@ function Register(props) {
     const formSubmitHandler = (event) => {
         setIsBtnDisabled(true)
         event.preventDefault();
-        const newUser = {email,password,confirmPassword,name}
+        const newUser = new FormData();
+        newUser.set('name', name);
+        newUser.set('email', email);
+        newUser.set('password', password);
+        newUser.set('confirmPassword', confirmPassword);
+        newUser.append('image', image);
+
         Axios.post('http://localhost:5000/api/users/register', newUser)
         .then((res)=> {
             toast.success(res.data.message, {position: toast.POSITION.TOP_RIGHT, autoClose: 2000})
@@ -42,20 +49,24 @@ function Register(props) {
                     <h1 className="register_heading text-center">Register</h1>
                     <form onSubmit={formSubmitHandler}>
                         <div className="mb-4">
+                            <h5 className="text-white font-weight-light">Profile Photo :</h5>
+                            <input type="file" required accept='.jpg,.png,.jpeg' onChange={(event)=> setImage(event.target.files[0])} className="form-control form-control"/>
+                        </div>
+                        <div className="mb-4">
                             <h5 className="text-white font-weight-light">Name :</h5>
-                            <input placeholder="Enter Name" required className="fieldInput mt-2" value={name} type="text" onChange={(event)=> setUsername(event.target.value)}/>
+                            <input placeholder="Enter Name" required className="form-control form-control" value={name} type="text" onChange={(event)=> setUsername(event.target.value)}/>
                         </div>
                         <div className="mb-4">
                             <h5 className="text-white font-weight-light">Email :</h5>
-                            <input placeholder="Enter Email" required className="fieldInput mt-2" value={email} type="email" onChange={(event)=> setEmail(event.target.value)}/>
+                            <input placeholder="Enter Email" required className="form-control form-control" value={email} type="email" onChange={(event)=> setEmail(event.target.value)}/>
                         </div>
                         <div className="mb-4">
                             <h5 className="text-white font-weight-light">Password :</h5>
-                            <input placeholder="Enter Password" required className="fieldInput mt-2" value={password} type="password" onChange={(event)=> setPassword(event.target.value)}/>
+                            <input placeholder="Enter Password" required className="form-control form-control" value={password} type="password" onChange={(event)=> setPassword(event.target.value)}/>
                         </div>
                         <div className="mb-2">
                             <h5 className="text-white font-weight-light">Confirm Password :</h5>
-                            <input placeholder="Enter Confirm Password" required className="fieldInput mt-2" value={confirmPassword} type="password" onChange={(event)=> setConfirmPassword(event.target.value)}/>
+                            <input placeholder="Enter Confirm Password" required className="form-control form-control" value={confirmPassword} type="password" onChange={(event)=> setConfirmPassword(event.target.value)}/>
                         </div>
                         <input disabled={isBtnDisabled} className="register-button mt-20" type="submit" value="SIGN UP"/>
                         <Link to="/login"><button disabled={isBtnDisabled} className="login-button mt-20" type="button">SIGN IN</button></Link>

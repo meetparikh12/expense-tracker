@@ -1,4 +1,4 @@
-import { ADD_NEW_TRANSACTION, GET_BALANCE } from "../actions/actionTypes";
+import { ADD_NEW_TRANSACTION, GET_BALANCE, REMOVE_TRANSACTIONS, SET_TRANSACTIONS } from "../actions/actionTypes";
 import cookie from 'js-cookie';
 
 const initialState = {
@@ -9,8 +9,13 @@ const initialState = {
 
 export const transactionReducer = (state=initialState, action) => {
     switch (action.type) {
+        case SET_TRANSACTIONS: 
+            return{
+                ...state,
+                transactionInfo: [...action.payload]
+            }
         case ADD_NEW_TRANSACTION:
-            const transactionArray = [...state.transactionInfo,action.payload]
+            const transactionArray = [action.payload, ...state.transactionInfo]
             cookie.set("transaction", transactionArray);
             return {
                 ...state,
@@ -24,6 +29,13 @@ export const transactionReducer = (state=initialState, action) => {
                 ...state,
                 incomeBalance: incomeArray,
                 expenseBalance: expenseArray
+            }
+        case REMOVE_TRANSACTIONS: 
+            return {
+                ...state,
+                transactionInfo: [],
+                incomeBalance: [],
+                expenseBalance: []
             }
         default:
             return state;

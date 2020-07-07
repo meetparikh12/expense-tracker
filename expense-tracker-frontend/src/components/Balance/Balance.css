@@ -20,3 +20,16 @@
 .expense_balance{
     color: rgb(240, 53, 53)
 }
+.profile-image {
+    width: 5.5rem;
+    height: 5.5rem;
+}
+.total-balance-block {
+    margin-top: 2%;
+}  
+
+@media screen and (max-width: 767px){
+    .total-balance-block {
+        margin-top: 5%
+    }
+}
