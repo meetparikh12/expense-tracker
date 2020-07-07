@@ -6,12 +6,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const {mongoURI} = require('./config/key');
+const path = require('path');
 
 const port = process.env.PORT || 5000;
 
 app.use(cors())
 app.use(bodyParser.json())
-
+app.use('/uploads/images', express.static(path.join(__dirname, 'uploads', 'images')));
 app.use('/api/users', userRoute)
 
 app.use((req,res,next)=> {
@@ -19,9 +20,14 @@ app.use((req,res,next)=> {
 })
 
 app.use((error,req,res,next)=> {
+    if(req.file) {
+        fs.unlink(req.file.path, (err) => {
+            err && console.log(err);
+        })
+    }
     const message = error.message || 'Unknown error occured';
     const status = error.status || 500;
-    res.status(status).json(message)
+    res.status(status).json({message})
 })
 
 mongoose.connect(mongoURI, {

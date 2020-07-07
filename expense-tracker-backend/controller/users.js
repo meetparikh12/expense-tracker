@@ -35,10 +35,14 @@ exports.REGISTER_USER = async (req,res,next) => {
     } catch(err){
         return next(new ErrorHandling('Password not hashed', 500));
     }
+    let imagePath = req.file.path;
+    imagePath = imagePath.replace(/\\/g, "/");
+
     user = new User({
         name,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        image: imagePath
     })
     try {
         await user.save();
@@ -82,7 +86,7 @@ exports.LOGIN_USER = async (req,res,next)=> {
     } catch(err){
         return next(new ErrorHandling('Not Authenticated', 401))
     }
-    res.status(200).json({token});
+    res.status(200).json({token, transactions: user.transaction});
 }
 
 exports.ADD_NEW_TRANSACTION = async (req,res,next)=> {
@@ -105,22 +109,6 @@ exports.ADD_NEW_TRANSACTION = async (req,res,next)=> {
         console.log(err);
         return next(new ErrorHandling('Transaction not saved',500))
     }
-    console.log(user);
-    res.status(201).json({message: 'Transaction added', user});
+    res.status(201).json({message: 'Transaction added'});
 }
 
-exports.GET_TRANSACTIONS = async (req,res,next)=> {
-    const {userId} = req.user;
-    let transactions;
-    try {
-        user = await User.findById(userId).select('transaction')
-    }catch(err){
-        return next(new ErrorHandling('User does not exist', 500))
-    }
-    if(!user){
-        return next(new ErrorHandling('User not found', 404))
-    }
-
-    res.status(200).json({transactions: user.transaction});
-    
-}
