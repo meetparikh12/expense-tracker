@@ -32,16 +32,16 @@
 }
 
 .register-button {
-    color: black;
     text-transform: uppercase;
     text-decoration: none;
-    background: gray;
     padding: 15px;
     border-radius: 5px;
     display: inline-block;
     border: none;
     width: 100%;
     cursor: pointer;
+    background: rgb(12, 11, 11);
+    color: white
 }
 
 .mt-20 {
@@ -49,8 +49,8 @@
 }
 
 .register-button:hover {
-    background: rgb(12, 11, 11);
-    color: white
+    color: black;
+    background: gray;
 }
 
 .register-button:focus {

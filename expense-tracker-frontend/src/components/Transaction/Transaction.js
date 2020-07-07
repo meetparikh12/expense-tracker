@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import './Transaction.css'
 import { connect } from 'react-redux';
 import { addNewTransaction } from '../../actions/actions';
+import Axios from 'axios';
+import { toast } from 'react-toastify';
 
 function Transaction(props) {
     const [text, setText] = useState('');
@@ -55,6 +57,13 @@ function Transaction(props) {
 const mapDispatchToProps = dispatchEvent => {
     return {
         addNewTransaction : (transactionInfo) => {
+            Axios.post('http://localhost:5000/api/users/transaction', transactionInfo)
+            .then((res)=> {
+                toast.success(res.data.message, {position: toast.POSITION.TOP_RIGHT, autoClose: 2000})
+            })
+            .catch((err)=> {
+                toast.error(err.response.data.message, {position: toast.POSITION.TOP_RIGHT, autoClose: 2000})
+            })
             dispatchEvent(addNewTransaction(transactionInfo))
         }
     }

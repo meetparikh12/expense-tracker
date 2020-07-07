@@ -1,2 +1,3 @@
 export const ADD_NEW_TRANSACTION = 'ADD_NEW_TRANSACTION'
 export const GET_BALANCE = 'GET_BALANCE'
+export const SET_USER_INFO = 'SET_USER_INFO'

@@ -12,7 +12,7 @@
     color: #fff !important;
     text-transform: uppercase;
     text-decoration: none;
-    background: indigo;
+    background: rgb(117, 19, 187);
     padding: 15px;
     border-radius: 5px;
     display: inline-block;
@@ -21,7 +21,7 @@
     cursor: pointer;
 }
 .button:hover{
-    background: rgb(117, 19, 187);
+    background: indigo;
 }
 
 .mt-20 {
