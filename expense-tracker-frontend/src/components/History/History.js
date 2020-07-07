@@ -16,7 +16,7 @@ function History({historyInfo}) {
     const indexOfLastTransaction = currentPage * transactionsPerPage;
     const indexOfFirstTransaction = indexOfLastTransaction - transactionsPerPage;
     const trans = [...transactions]
-    const currentTransactions = trans.splice(indexOfFirstTransaction, indexOfLastTransaction);
+    const currentTransactions = trans.splice(indexOfFirstTransaction, transactionsPerPage);
     const paginate = (pageNumber) =>{
         setCurrentPage(pageNumber)
     }

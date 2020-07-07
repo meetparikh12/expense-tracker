@@ -1,4 +1,13 @@
-.pagination-center{
-    margin: 0 auto 5.5% auto;
-    width: max-content;    
+
+@-moz-document url-prefix() {
+    .pagination-center {
+        width: -moz-max-content;
+        margin: 0 auto;
+    }
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .pagination-center {
+       margin: 5% auto;
+       width: max-content;
+    }
 }

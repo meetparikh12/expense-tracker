@@ -7,8 +7,8 @@ export default function Pagination({transactionsPerPage, totalTransactions, pagi
         pageNumbers.push(i);
     }
     return (
-        <nav>
-            <ul className="pagination pagination-center">
+        <nav className="pagination-center">
+            <ul className="pagination">
                 {pageNumbers.map(number => 
                     <li key={number} className="page-item">
                         <button onClick={() => paginate(number)} className="page-link">

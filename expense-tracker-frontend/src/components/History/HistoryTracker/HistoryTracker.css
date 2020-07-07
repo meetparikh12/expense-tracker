@@ -2,7 +2,12 @@
     border: 1.5px solid gray;
     padding: 14px;
     background-color: rgb(224, 213, 213);
-    margin: 5% auto;
+    margin: 2% auto;
+}
+@-moz-document url-prefix() {
+    .history-info {
+        margin: 5% auto;
+    }
 }
 
 li {
